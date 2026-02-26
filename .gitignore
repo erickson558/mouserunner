@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+build/
+dist/
+build_2/
+build_3/
+build_new/
+dist_2/
+dist_3/
+dist_new/
+*.exe
