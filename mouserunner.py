@@ -6,7 +6,7 @@ import logging
 import sys
 from pathlib import Path
 
-from mouse_runner import MouseRunnerApp, MouseRunnerService, build_default_config
+from mouse_runner import MouseRunnerApp, MouseRunnerService, __version_tag__, build_default_config
 
 
 def configure_logging() -> None:
@@ -15,6 +15,7 @@ def configure_logging() -> None:
 
 
 def main() -> None:
+    # Keep initialization deterministic for both source execution and frozen EXE.
     configure_logging()
     config = build_default_config()
     service = MouseRunnerService(config=config)
@@ -23,7 +24,7 @@ def main() -> None:
     else:
         base_path = Path(__file__).resolve().parent
     icon_path = base_path / "mouserunner.ico"
-    app = MouseRunnerApp(service=service, app_title="MouseRunner v1.9", icon_path=icon_path)
+    app = MouseRunnerApp(service=service, app_title=f"MouseRunner {__version_tag__}", icon_path=icon_path)
     app.run()
 
 

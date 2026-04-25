@@ -58,6 +58,10 @@ class MouseRunnerService:
         with self._lock:
             return self._running
 
+    def set_status_callback(self, callback: StatusCallback | None) -> None:
+        """Sets a status callback at runtime without restarting workers."""
+        self._on_status = callback or logger.info
+
     def start(self) -> bool:
         """Starts worker threads if not already running."""
         with self._lock:

@@ -2,8 +2,6 @@
 
 from pathlib import Path
 
-from PyInstaller.utils.hooks import collect_data_files
-
 
 PROJECT_ROOT = Path(SPECPATH)
 
@@ -12,7 +10,7 @@ a = Analysis(
     [str(PROJECT_ROOT / 'mouserunner.py')],
     pathex=[str(PROJECT_ROOT), str(PROJECT_ROOT / 'mouse_runner')],
     binaries=[],
-    datas=[(str(PROJECT_ROOT / 'mouserunner.ico'), '.')] + collect_data_files('tkinter'),
+    datas=[(str(PROJECT_ROOT / 'mouserunner.ico'), '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -29,7 +27,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='mouserunner',
+    name='mouserunner_test',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
